@@ -2,6 +2,8 @@ package com.abahrami.template.book.controller
 
 import com.abahrami.template.book.domain.Book
 import com.abahrami.template.book.repository.BookRepository
+import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 import spock.lang.Specification
 
 /**
@@ -9,37 +11,40 @@ import spock.lang.Specification
  */
 class BookControllerSpec extends Specification {
 
-    private BookController bookController
-    private BookRepository mockBookRepository
+    private BookController controller
+    private BookRepository mockRepository
     private Book sampleBook
 
     void setup() {
-        mockBookRepository = Mock()
-        bookController = new BookController(mockBookRepository)
+        mockRepository = Mock()
+        controller = new BookController(mockRepository)
         sampleBook = new Book('hp1', 'Harry Potter 1', 'isbn1')
     }
 
     void 'should call service for create'() {
         given:
-        1 * mockBookRepository.save(sampleBook) >> sampleBook
+        Mono<Book> expectedResult = Mono.just(sampleBook)
+        1 * mockRepository.save(sampleBook) >> expectedResult
 
         expect:
-        bookController.create(sampleBook) == sampleBook
+        controller.create(sampleBook) == expectedResult
     }
 
     void 'should call service for retrieve'() {
         given:
-        1 * mockBookRepository.findById('id1') >> Optional.of(sampleBook)
+        Mono<Book> expectedResult = Mono.just(sampleBook)
+        1 * mockRepository.findById('id1') >> expectedResult
 
         expect:
-        bookController.retrieve('id1') == sampleBook
+        controller.retrieve('id1') == expectedResult
     }
 
     void 'should call service for search'() {
         given:
-        1 * mockBookRepository.findByTitleLike('harry') >> [sampleBook]
+        Flux<Book> expectedResult = Flux.just(sampleBook)
+        1 * mockRepository.findByTitleLike('harry') >> expectedResult
 
         expect:
-        bookController.search('harry') == [sampleBook]
+        controller.search('harry') == expectedResult
     }
 }

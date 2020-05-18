@@ -1,14 +1,14 @@
-This is template project for a Web application configured with Gradle, Java, and Spring Boot Web technologies.
+This is template project for a Reactive Web application configured with Gradle, Java, and Spring Boot Web technologies.
 Features:
-* Spring Boot is configured to support RESTFul APIs.
-* Swagger framework is configuraed and ready to use to help developers design, build, document, and consume RESTful APIs
+* Spring Boot is configured to support Reactive RESTFul APIs.
+* Swagger framework is configured and ready to use to help developers design, build, document, and consume RESTFul APIs
 * Spring Actuator is configured to manage application at production.
-* Mongo DB liberaries are configured to support persistance layer.
+* Reactive Mongo DB libraries are configured to support persistence layer.
 * Lombok library is configured to help avoiding boiler-plate codes in Java.
 * Spock testing framework is configured to support unit tests.
 * JUnit 5 is configured to support unit/integration tests.
 * Jacoco plugin is configured as a code coverage tool.
-* checkstyle plugin is configured with Google code style standars for static code analysis.
+* checkstyle plugin is configured with Google code style standards for static code analysis.
 * PMD plugin is configured with a reasonable rules configuration for static code analysis.
 
 # Getting Started

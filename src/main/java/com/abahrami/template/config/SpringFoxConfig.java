@@ -12,10 +12,10 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 @Configuration
-@EnableSwagger2
+@EnableSwagger2WebFlux
 @Import({springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration.class})
 public class SpringFoxConfig {
 
